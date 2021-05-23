@@ -84,6 +84,12 @@
     <Compile Include="VersionManager.Designer.cs">
       <DependentUpon>VersionManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="WebInstaller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebInstaller.Designer.cs">
+      <DependentUpon>WebInstaller.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,6 +115,9 @@
     <EmbeddedResource Include="VersionManager.resx">
       <DependentUpon>VersionManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WebInstaller.resx">
+      <DependentUpon>WebInstaller.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="desc.rtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -126,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="blendhublogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="blenderlogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

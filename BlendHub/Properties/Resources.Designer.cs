@@ -61,6 +61,16 @@ namespace BlendHub.Properties {
         }
         
         /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Icon podobny do zasobu (Ikona).
+        /// </summary>
+        internal static System.Drawing.Icon blenderlogo {
+            get {
+                object obj = ResourceManager.GetObject("blenderlogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap blendhublogo {
@@ -72,9 +82,9 @@ namespace BlendHub.Properties {
         
         /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu {\rtf1\ansi\ansicpg1250\deff0\nouicompat\deflang1045{\fonttbl{\f0\fnil\fcharset238 Arial;}{\f1\fnil\fcharset0 Arial;}}
-        ///{\colortbl ;\red255\green255\blue255;\red0\green0\blue255;}
+        ///{\colortbl ;\red0\green0\blue255;}
         ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
-        ///\pard\sa200\sl276\slmult1\cf1\b\f0\fs20 BlendHub \b0 is a project manager for \i Blender\i0 . It is not associated with \i Blender Foundation \i0 in any way and was made by one guy getting overly frustrated with the 10 versions of \i Blender \i0 on a single PC. You can do whateve [obcięto pozostałą część ciągu]&quot;;.
+        ///\pard\sa200\sl276\slmult1\b\f0\fs20 BlendHub \b0 is a project manager for \i Blender\i0 . It is not associated with \i Blender Foundation \i0 in any way and was made by one guy getting overly frustrated with 10 versions of \i Blender \i0 on a single PC. This project is on the MIT license, read below.\par [obcięto pozostałą część ciągu]&quot;;.
         /// </summary>
         internal static string desc {
             get {

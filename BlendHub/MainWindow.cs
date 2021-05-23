@@ -36,8 +36,8 @@ namespace BlendHub {
         public static List<Project> projects = new List<Project>();
         public static Dictionary<string, BlenderVersion> blenderVersions = new Dictionary<string, BlenderVersion>();
         
-        private VersionManager versionManager = new VersionManager();
-        private CreateProjectWindow createProjectWindow = new CreateProjectWindow();
+        public VersionManager versionManager = new VersionManager();
+        public CreateProjectWindow createProjectWindow = new CreateProjectWindow();
 
         private static bool lockEditing = false;
 
@@ -149,6 +149,8 @@ namespace BlendHub {
             if(!blenderVersions.ContainsKey(project.versionName)) {
                 MessageBox.Show("The version does not exist. Please select a different one.");
                 EditVersion(indx);
+
+                return new Project() { name = "CON" };
             }
 
             string blenderPath = blenderVersions[project.versionName].path;
@@ -174,7 +176,9 @@ namespace BlendHub {
 
         private void lbx_ProjectList_MouseDoubleClick(object sender, MouseEventArgs e) {
             if (lbx_ProjectList.SelectedIndices.Count <= 0) return;
-            projects[lbx_ProjectList.SelectedIndices[0]] = StartProject(lbx_ProjectList.SelectedIndices[0]);
+            var p = StartProject(lbx_ProjectList.SelectedIndices[0]);
+            if (p.name == "CON") return;
+            projects[lbx_ProjectList.SelectedIndices[0]] = p;
             SaveConfigs();
             SortProjectList();
             RefreshProjectList();

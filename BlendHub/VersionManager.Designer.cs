@@ -81,7 +81,6 @@ namespace BlendHub {
             // btn_InstallWeb
             // 
             this.btn_InstallWeb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(72)))), ((int)(((byte)(72)))));
-            this.btn_InstallWeb.Enabled = false;
             this.btn_InstallWeb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_InstallWeb.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_InstallWeb.ForeColor = System.Drawing.SystemColors.Control;
@@ -91,6 +90,7 @@ namespace BlendHub {
             this.btn_InstallWeb.TabIndex = 8;
             this.btn_InstallWeb.Text = "Download version";
             this.btn_InstallWeb.UseVisualStyleBackColor = false;
+            this.btn_InstallWeb.Click += new System.EventHandler(this.btn_InstallWeb_Click);
             // 
             // btn_RemoveVersion
             // 

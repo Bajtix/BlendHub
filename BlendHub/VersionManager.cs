@@ -33,17 +33,25 @@ namespace BlendHub {
         private void btn_InstallZip_Click(object sender, EventArgs e) {
             if (dlg_openArchive.ShowDialog() != DialogResult.OK) return;
 
-            string labelName = SimplifyBlenderName(Path.GetFileNameWithoutExtension(dlg_openArchive.FileName));
-            string n = MainWindow.InstallationsPath + "/" + Path.GetFileNameWithoutExtension(dlg_openArchive.FileName);
-            if (Directory.Exists(n)) return;
-            
-            ZipFile.ExtractToDirectory(dlg_openArchive.FileName, MainWindow.InstallationsPath);
+            InstallZip(dlg_openArchive.FileName);
+        }
 
+        public void InstallZip(string path) {
+            string labelName = SimplifyBlenderName(Path.GetFileNameWithoutExtension(path));
+            
+            Directory.CreateDirectory("tmp");
+            ZipFile.ExtractToDirectory(path, "tmp");
+            string foldername = Directory.GetDirectories("tmp")[0].Substring(4);
+            
+            string n = MainWindow.InstallationsPath + "/" + foldername;
+            
+            if (Directory.Exists(n)) return;
+            CopyFilesRecursively("tmp/" + foldername, MainWindow.InstallationsPath + "/" + foldername);
             MainWindow.blenderVersions.Add(labelName, new BlenderVersion() {
                 label = labelName,
                 path = n + "/blender.exe"
             });
-
+            Directory.Delete("tmp", true);
             LoadVersions();
             MainWindow.SaveConfigs();
         }
@@ -72,7 +80,7 @@ namespace BlendHub {
 
         private void btn_RemoveVersion_Click(object sender, EventArgs e) {
             BlenderVersion toremove = MainWindow.blenderVersions.Values.ToArray()[lbx_Versions.SelectedIndex];
-            
+            Console.WriteLine(toremove.path);
             Directory.Delete(Path.GetDirectoryName(toremove.path), true);
             MainWindow.blenderVersions.Remove(MainWindow.blenderVersions.Keys.ToArray()[lbx_Versions.SelectedIndex]);
 
@@ -93,5 +101,9 @@ namespace BlendHub {
             }
         }
 
+        private void btn_InstallWeb_Click(object sender, EventArgs e) {
+            WebInstaller i = new WebInstaller();
+            i.Show();
+        }
     }
 }
