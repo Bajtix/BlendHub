@@ -26,8 +26,8 @@ namespace BlendHub {
             foreach (var item in MainWindow.blenderVersions.Keys) {
                 cbx_VersionSelect.Items.Add(item);
             }
-            if(cbx_VersionSelect.Items.Count > 0)
-                cbx_VersionSelect.SelectedIndex = 0;
+            if (cbx_VersionSelect.Items.Count > MainWindow.configs.lastVersion)
+                cbx_VersionSelect.SelectedIndex = MainWindow.configs.lastVersion;
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e) {
@@ -54,10 +54,14 @@ namespace BlendHub {
                     MessageBox.Show("Path Exists");
                     break;
                 case 1:
-                    MainWindow.instance.StartProject(MainWindow.projects.Count - 1);
+                    MainWindow.instance.StartProject(MainWindow.projects.Count);
                     Close();
                     break;
             }
+        }
+
+        private void CreateProjectWindow_Load(object sender, EventArgs e) {
+
         }
     }
 }

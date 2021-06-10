@@ -39,6 +39,12 @@ namespace BlendHub {
         public VersionManager versionManager = new VersionManager();
         public CreateProjectWindow createProjectWindow = new CreateProjectWindow();
 
+        [Serializable] public struct Config {
+            public int lastVersion;
+        }
+
+        public static Config configs = new Config();
+
         private static bool lockEditing = false;
 
         public MainWindow() {
@@ -51,6 +57,8 @@ namespace BlendHub {
             RefreshProjectList();
 
             instance = this;
+
+            
         }
 
         private void RefreshProjectList() {
@@ -95,14 +103,18 @@ namespace BlendHub {
         public static void SaveConfigs() {
             string projectJson = JsonConvert.SerializeObject(projects.ToArray());
             string versionJson = JsonConvert.SerializeObject(blenderVersions);
+            string configJson = JsonConvert.SerializeObject(configs);
 
             File.WriteAllText(ConfigPath + "/versions.json", versionJson);
             File.WriteAllText(ProjectsPath + "/projects.json", projectJson);
+            File.WriteAllText(ConfigPath + "/config.json", configJson);
         }
 
         public static void LoadConfigs() {
             string projectJson; 
             string versionJson;
+            string configJson;
+
             if (File.Exists(ProjectsPath + "/projects.json")) {
                 projectJson = File.ReadAllText(ProjectsPath + "/projects.json");
                 projects = JsonConvert.DeserializeObject<Project[]>(projectJson).ToList();
@@ -110,6 +122,10 @@ namespace BlendHub {
             if (File.Exists(ConfigPath + "/versions.json")) {
                 versionJson = File.ReadAllText(ConfigPath + "/versions.json");
                 blenderVersions = JsonConvert.DeserializeObject<Dictionary<string, BlenderVersion>>(versionJson);
+            }
+            if (File.Exists(ConfigPath + "/config.json")) {
+                configJson = File.ReadAllText(ConfigPath + "/config.json");
+                MainWindow.configs = JsonConvert.DeserializeObject<Config>(configJson);
             }
         }
 
@@ -160,7 +176,7 @@ namespace BlendHub {
             info.Arguments = '"' + filePath + '"';
             Process.Start('"' + project.path + '"');
             Process.Start(info);
-
+            configs.lastVersion = blenderVersions.Keys.ToList().IndexOf(project.versionName);
             return project;
         }
 
@@ -222,6 +238,26 @@ namespace BlendHub {
 
         private void btn_OpenAbout_Click(object sender, EventArgs e) {
             new About().Show();
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e) {
+            if (Environment.GetCommandLineArgs().Length > 1) {
+                string pp = Environment.GetCommandLineArgs()[1];
+                if (!pp.EndsWith(".blend")) {
+                    if (pp.Contains("-l")) /*dumb dumb*/ {
+                        Visible = false; // Hide form window.
+                        ShowInTaskbar = false; // Remove from taskbar.
+                        new OpenWithBlender("").Show();
+                    }
+                    return;
+                }
+                
+
+                Visible = false; // Hide form window.
+                ShowInTaskbar = false; // Remove from taskbar.
+                new OpenWithBlender(pp).Show();
+
+            }
         }
     }
 }

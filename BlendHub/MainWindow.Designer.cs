@@ -24,7 +24,7 @@ namespace BlendHub {
         /// jej zawartości w edytorze kodu.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "NAME",
             "VERSION",
             "DATE"}, -1);
@@ -72,7 +72,7 @@ namespace BlendHub {
             this.lbx_ProjectList.ForeColor = System.Drawing.SystemColors.Window;
             this.lbx_ProjectList.HideSelection = false;
             this.lbx_ProjectList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem1});
             this.lbx_ProjectList.Location = new System.Drawing.Point(239, 12);
             this.lbx_ProjectList.Name = "lbx_ProjectList";
             this.lbx_ProjectList.Size = new System.Drawing.Size(469, 389);
@@ -233,6 +233,7 @@ namespace BlendHub {
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "BlendHub";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
             this.ResumeLayout(false);

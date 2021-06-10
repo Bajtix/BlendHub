@@ -133,6 +133,7 @@ namespace BlendHub {
             this.MaximizeBox = false;
             this.Name = "CreateProjectWindow";
             this.Text = "Create Project";
+            this.Load += new System.EventHandler(this.CreateProjectWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
