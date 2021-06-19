@@ -240,7 +240,30 @@ namespace BlendHub {
             new About().Show();
         }
 
-        private void MainWindow_Load(object sender, EventArgs e) {
+        private void MainWindow_Load(object sender, EventArgs e) { //TODO: rework the args thing please.
+            if (Environment.GetCommandLineArgs().Length > 3) {
+                string[] arg = Environment.GetCommandLineArgs();
+                string a = "";
+                for (int i = 1; i < arg.Length; i++) {
+                    a += "\"" + arg[i] + "\" ";
+                }
+                a += " --background";
+
+                string path = MainWindow.blenderVersions.Values.ToArray()[configs.lastVersion].path; // open blender
+                var info = new ProcessStartInfo(path);
+                info.UseShellExecute = false;
+                info.Arguments = a;
+                info.WindowStyle = ProcessWindowStyle.Hidden;
+                info.CreateNoWindow = true;
+                
+                info.RedirectStandardOutput = true;
+
+                var p = Process.Start(info);
+                p.WaitForExit();
+                Close();
+                return;
+            }
+
             if (Environment.GetCommandLineArgs().Length > 1) {
                 string pp = Environment.GetCommandLineArgs()[1];
                 if (!pp.EndsWith(".blend")) {

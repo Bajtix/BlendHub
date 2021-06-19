@@ -43,7 +43,7 @@ namespace BlendHub {
             info.UseShellExecute = false;
             info.WorkingDirectory = Path.GetDirectoryName(path);
             if(projectPath != "")
-            info.Arguments = '"' + projectPath + '"';
+                info.Arguments = '"' + projectPath + '"';
             MainWindow.configs.lastVersion = cbx_VersionSelect.SelectedIndex;
             MainWindow.SaveConfigs();
 
