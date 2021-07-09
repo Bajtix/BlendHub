@@ -203,7 +203,7 @@ namespace BlendHub {
             this.lbl_version.Name = "lbl_version";
             this.lbl_version.Size = new System.Drawing.Size(159, 18);
             this.lbl_version.TabIndex = 8;
-            this.lbl_version.Text = "BlendHub v0.1.0 Beta";
+            this.lbl_version.Text = "BlendHub v0.1.3 Beta";
             this.lbl_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pic_logo

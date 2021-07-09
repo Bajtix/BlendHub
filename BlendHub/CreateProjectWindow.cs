@@ -54,7 +54,7 @@ namespace BlendHub {
                     MessageBox.Show("Path Exists");
                     break;
                 case 1:
-                    MainWindow.instance.StartProject(MainWindow.projects.Count);
+                    MainWindow.instance.StartProject(0); // forgot that it sorts it by date. The first one is the newest.
                     Close();
                     break;
             }

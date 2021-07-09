@@ -266,7 +266,13 @@ namespace BlendHub {
 
             if (Environment.GetCommandLineArgs().Length > 1) {
                 string pp = Environment.GetCommandLineArgs()[1];
-                if (!pp.EndsWith(".blend")) {
+
+                if(pp.ToLower().EndsWith(".blend") || pp.ToLower().EndsWith(".fbx")) {
+                    Visible = false; // Hide form window.
+                    ShowInTaskbar = false; // Remove from taskbar.
+                    new OpenWithBlender(pp).Show();
+                }
+                else {
                     if (pp.Contains("-l")) /*dumb dumb*/ {
                         Visible = false; // Hide form window.
                         ShowInTaskbar = false; // Remove from taskbar.
@@ -276,9 +282,7 @@ namespace BlendHub {
                 }
                 
 
-                Visible = false; // Hide form window.
-                ShowInTaskbar = false; // Remove from taskbar.
-                new OpenWithBlender(pp).Show();
+                
 
             }
         }

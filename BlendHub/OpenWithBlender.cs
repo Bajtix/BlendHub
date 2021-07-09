@@ -17,6 +17,8 @@ namespace BlendHub {
             InitializeComponent();
             this.projectPath = projectPath;
             this.Left = Cursor.Position.X;
+            if (Cursor.Position.Y > Screen.GetBounds(Cursor.Position).Height)
+                this.Top = Screen.GetBounds(Cursor.Position).Height / 2;
             this.Top = Cursor.Position.Y;
         }
 
@@ -40,13 +42,18 @@ namespace BlendHub {
 
             string path = MainWindow.blenderVersions.Values.ToArray()[cbx_VersionSelect.SelectedIndex].path; // open blender
             var info = new ProcessStartInfo(path);
-            info.UseShellExecute = false;
+            info.UseShellExecute = true;
             info.WorkingDirectory = Path.GetDirectoryName(path);
-            if(projectPath != "")
-                info.Arguments = '"' + projectPath + '"';
+            if (projectPath != "") {
+                if (projectPath.ToLower().EndsWith(".blend"))
+                    info.Arguments = '"' + projectPath + '"';
+                else if (projectPath.ToLower().EndsWith(".fbx")) {
+                    info.Arguments = $"--python-expr \"import bpy; bpy.data.objects.remove(bpy.data.objects['Cube'], do_unlink = True); bpy.ops.import_scene.fbx(filepath = '{projectPath.Replace('\\','/')}')\"";
+                }
+            }
             MainWindow.configs.lastVersion = cbx_VersionSelect.SelectedIndex;
             MainWindow.SaveConfigs();
-
+            MessageBox.Show(info.Arguments);
             Process.Start(info);
 
             MainWindow.instance.Close();

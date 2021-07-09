@@ -54,10 +54,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D7B7E1DA0785847ECFC869547A9135346F1B6338</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>27278114DA7CE9F2EDC2F9B07E7CF622EEB94605</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>BlendHub_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>BlendHub_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -154,6 +154,7 @@
     <EmbeddedResource Include="WebInstaller.resx">
       <DependentUpon>WebInstaller.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BlendHub_1_TemporaryKey.pfx" />
     <None Include="BlendHub_TemporaryKey.pfx" />
     <None Include="desc.rtf" />
     <None Include="packages.config" />

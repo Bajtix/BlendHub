@@ -63,7 +63,7 @@ namespace BlendHub {
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Cancel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_Cancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_Cancel.Location = new System.Drawing.Point(18, 195);
+            this.btn_Cancel.Location = new System.Drawing.Point(18, 169);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(119, 34);
             this.btn_Cancel.TabIndex = 16;
@@ -77,7 +77,7 @@ namespace BlendHub {
             this.btn_CreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_CreateProject.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btn_CreateProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_CreateProject.Location = new System.Drawing.Point(143, 195);
+            this.btn_CreateProject.Location = new System.Drawing.Point(143, 169);
             this.btn_CreateProject.Name = "btn_CreateProject";
             this.btn_CreateProject.Size = new System.Drawing.Size(213, 34);
             this.btn_CreateProject.TabIndex = 15;
@@ -140,7 +140,7 @@ namespace BlendHub {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(373, 252);
+            this.ClientSize = new System.Drawing.Size(373, 215);
             this.Controls.Add(this.btn_OpenFolder);
             this.Controls.Add(this.btn_RemoveProject);
             this.Controls.Add(this.lbl_2);
